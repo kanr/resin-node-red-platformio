@@ -15,7 +15,7 @@ RUN npm config set unsafe-perm true
 RUN python -c "$(curl -fsSL https://raw.githubusercontent.com/platformio/platformio/develop/scripts/get-platformio.py)"
 
 # change directory to folder where is located downloaded "get-platformio.py"
-RUN cd /path/to/dir/where/is/located/get-platformio.py/script
+#RUN cd /path/to/dir/where/is/located/get-platformio.py/script
 
 # run it
 RUN python get-platformio.py

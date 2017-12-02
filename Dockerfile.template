@@ -15,7 +15,7 @@ RUN npm config set unsafe-perm true
 RUN python -c "$(curl -fsSL https://raw.githubusercontent.com/platformio/platformio/develop/scripts/get-platformio.py -o /usr/src/app)"
 
 # run it
-RUN python get-platformio.py
+#RUN python get-platformio.py
 
 # This install npm dependencies on the resin.io build server,
 # making sure to clean up the artifacts it creates in order to reduce the image size.

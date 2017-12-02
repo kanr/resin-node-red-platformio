@@ -12,7 +12,7 @@ WORKDIR /usr/src/app
 RUN npm config set unsafe-perm true
 
 # Install PlatformIO
-RUN python -c "$(curl -fsSLo /usr/src/app https://raw.githubusercontent.com/platformio/platformio/develop/scripts/get-platformio.py)"
+RUN python -c "$(curl -fsSL /usr/src/app https://raw.githubusercontent.com/platformio/platformio/develop/scripts/get-platformio.py -o /usr/src/app)"
 
 # run it
 RUN python get-platformio.py

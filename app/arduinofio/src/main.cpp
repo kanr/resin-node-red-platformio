@@ -1,38 +1,51 @@
-/********************************************************************/
-// First we include the libraries
-#include <OneWire.h>
-#include <DallasTemperature.h>
-/********************************************************************/
-// Data wire is plugged into pin 2 on the Arduino
-#define ONE_WIRE_BUS 2
-/********************************************************************/
-// Setup a oneWire instance to communicate with any OneWire devices
-// (not just Maxim/Dallas temperature ICs)
-OneWire oneWire(ONE_WIRE_BUS);
-/********************************************************************/
-// Pass our oneWire reference to Dallas Temperature.
-DallasTemperature sensors(&oneWire);
-/********************************************************************/
-void setup(void)
+/**
+ * PicoBuck Breakout Example
+ * Mike Hord @ SparkFun Electronics
+ * Nov 5 2015
+ *
+ * A simple example showing how to control a PicoBuck with an Arduino.
+ *
+ * License: http://opensource.org/licenses/MIT
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+const int CHL_1 = 3;
+const int CHL_2 = 5;
+const int CHL_3 = 6;
+
+// const int OUTPUT = 255;
+
+void setup()
 {
- // start serial port
- Serial.begin(9600);
- Serial.println("Dallas Temperature IC Control Library Demo");
- // Start up the library
- sensors.begin();
+    pinMode(CHL_1, OUTPUT);
+    pinMode(CHL_2, OUTPUT);
+    pinMode(CHL_3, OUTPUT);
 }
-void loop(void)
+
+void loop()
 {
- // call sensors.requestTemperatures() to issue a global temperature
- // request to all devices on the bus
-/********************************************************************/
- Serial.print(" Requesting temperatures...");
- sensors.requestTemperatures(); // Send the command to get temperature readings
- Serial.println("DONE");
-/********************************************************************/
- Serial.print("Temperature is: ");
- Serial.print(sensors.getTempCByIndex(0)); // Why "byIndex"?
-   // You can have more than one DS18B20 on the same bus.
-   // 0 refers to the first IC on the wire
-   delay(1000);
+    // Let's just step through a couple of values, so we can see how they look.
+    //  Remember, LEDs are non-linear, so doubling the PWM output value won't
+    //  necessarily double the apparent brightness.
+    analogWrite(CHL_1, 0);
+    analogWrite(CHL_2, 0);
+    analogWrite(CHL_3, 0);
+    delay(1000);
+
+    analogWrite(CHL_1, 64);
+    analogWrite(CHL_2, 64);
+    analogWrite(CHL_3, 64);
+    delay(1000);
+
+    analogWrite(CHL_1, 255);
+    analogWrite(CHL_2, 255);
+    analogWrite(CHL_3, 255);
+    delay(1000);
 }

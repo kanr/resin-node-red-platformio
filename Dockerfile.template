@@ -12,7 +12,7 @@ WORKDIR /usr/src/app
 RUN npm config set unsafe-perm true
 
 #Install build dependencies for platformIO
-RUN apk update && apk upgrade && apk add avr-libc avrdude pip
+RUN apk update && apk upgrade && apk add avr-libc avrdude
 
 # Install PlatformIO
 RUN python -c "$(curl -fsSL https://raw.githubusercontent.com/platformio/platformio/develop/scripts/get-platformio.py)"

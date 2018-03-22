@@ -11,8 +11,8 @@ WORKDIR /usr/src/app
 # Set npm
 RUN npm config set unsafe-perm true
 
-#Install build dependencies for platformIO 
-RUN apk update && apk upgrade &&apk add avr-libc avrdude
+#Install build dependencies for platformIO
+RUN apk update && apk upgrade && apk add avr-libc avrdude pip
 
 # Install PlatformIO
 RUN python -c "$(curl -fsSL https://raw.githubusercontent.com/platformio/platformio/develop/scripts/get-platformio.py)"
@@ -20,6 +20,7 @@ RUN python -c "$(curl -fsSL https://raw.githubusercontent.com/platformio/platfor
 # This install npm dependencies on the resin.io build server,
 # making sure to clean up the artifacts it creates in order to reduce the image size.
 RUN JOBS=MAX npm install -g node-red \
+onoff\
 node-red-contrib-resinio \
 serialport \
 node-red-admin \

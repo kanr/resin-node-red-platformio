@@ -46,6 +46,7 @@ node-red-contrib-gpio \
 node-red-dashboard \
 && \
 npm link onoff \
+&& \
 npm cache clean --force && rm -rf /tmp/*
 
 #RUN apk del make gcc g++ python

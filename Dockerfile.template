@@ -20,7 +20,7 @@ RUN python -c "$(curl -fsSL https://raw.githubusercontent.com/platformio/platfor
 # This install npm dependencies on the resin.io build server,
 # making sure to clean up the artifacts it creates in order to reduce the image size.
 RUN JOBS=MAX npm install -g node-red \
-onoff\
+onoff \
 node-red-contrib-resinio \
 serialport \
 node-red-admin \

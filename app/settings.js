@@ -178,7 +178,7 @@ module.exports = {
     functionGlobalContext: {
         process: process,
         os: require('os'),
-        onoff:require('onoff'),
+        onoff: require('onoff'),
         // octalbonescript:require('octalbonescript'),
         // jfive:require("johnny-five"),
         // j5board:require("johnny-five").Board({repl:false})

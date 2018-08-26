@@ -35,8 +35,21 @@ void setup() {
 }
 
 void loop() {
+/* //  using the individual reads requires the extra delay in between
+  delay(2000);
   Serial.print("Hum: "); Serial.println(am2315.readHumidity());
+  delay(2000);
   Serial.print("Temp: "); Serial.println(am2315.readTemperature());
+*/
 
-  delay(1000);
+  //read both in the same call
+  delay(2000);  //delay first to avoid inital bad reading
+  float sensorHumidity;
+  float sensorTemperature;
+  if (am2315.readTemperatureAndHumidity(sensorTemperature, sensorHumidity)) {
+    Serial.print("Hum: "); Serial.println(sensorHumidity);
+    Serial.print("Temp: "); Serial.println(sensorTemperature);
+  } else {
+    Serial.println("bad read");
+  }
 }
